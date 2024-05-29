@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React,{ useState, useEffect } from 'react'
 import { MockAPI } from './lib/ApiClient'
 import './App.css'
 
@@ -17,9 +17,9 @@ function App() {
   }, [])
 
   return (
-    <>
-      
-    </>
+    <React.Fragment>
+      <h1 className='header'>Discover your team highlights</h1>
+    </React.Fragment>
   )
 }
 
