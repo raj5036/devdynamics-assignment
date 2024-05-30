@@ -11,6 +11,19 @@
 
 .mainContainer {
   margin-top: 60px;
+  width: 100%;
+}
+
+.selectContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+.selectContainer .select {
+  width: 18em;
 }
 
 .totalActivityContainer {

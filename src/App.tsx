@@ -24,18 +24,22 @@ function App() {
       
       {appData &&
       <div className='mainContainer'>
-        <Select 
-          options={appData.data.AuthorWorklog.rows.map((row: any) => {
-            return {
-              label: row.name, value: row.name
-            }
-          })}
-          isMulti={false}
-          onChange={(option: any) => setCurrentUser(option.value)}
-        />
+        <div className='selectContainer'>
+          <span>Choose a developer</span>
+          <Select 
+            className='select'
+            options={appData.data.AuthorWorklog.rows.map((row: any) => {
+              return {
+                label: row.name, value: row.name
+              }
+            })}
+            isMulti={false}
+            onChange={(option: any) => setCurrentUser(option.value)}
+          />
+        </div>
         
         <div className='totalActivityContainer'>
-          {/* {appData.data.AuthorWorklog.rows} */}
+          
         </div>
       </div>
       }
