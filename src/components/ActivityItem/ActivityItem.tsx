@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaArrowRight } from "react-icons/fa6";
+import CountUp from 'react-countup';
 import './ActivityItem.css'
 
 interface PropTypes {
@@ -13,7 +14,9 @@ const ActivityItem: React.FC<PropTypes>  = ({title, value}) => {
 			<span className='title'>{title}</span>
 			<FaArrowRight className='arrowIcon'/>
 		</div>
-		<div className='value'>{value}</div>
+		<div className='value'>
+			{value == 0 ? value : <CountUp start={0} end={value} duration={2}/>}
+		</div>
 	</div>)
 } 
 

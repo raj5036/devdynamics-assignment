@@ -69,7 +69,7 @@ const MockAPIResponse: unknown = {
 					},
 					{
 						"name": "Incident Alerts",
-						"value": "0"
+						"value": "100"
 					},
 					{
 					"name": "Incidents Resolved",
