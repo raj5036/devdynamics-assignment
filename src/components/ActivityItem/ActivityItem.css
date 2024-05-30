@@ -1,3 +1,31 @@
 .activityItemContainer {
-	
+	border: solid 1px #ccc;
+    height: 88px;
+    width: 194px;
+	border-radius: 5px;
+}
+
+.titleContainer {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 8px;
+	margin-top: 10px;
+	margin-left: 14px;
+}
+
+.title {
+	font-size: 14px;
+    opacity: 0.8;
+}
+
+.arrowIcon {
+	font-size: 14px;
+    opacity: 0.7;
+}
+
+.value {
+	margin-left: 14px;
+	font-size: 38px;
+    font-weight: 600;
 }

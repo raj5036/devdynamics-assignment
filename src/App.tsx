@@ -2,11 +2,9 @@ import React,{ useState, useEffect } from 'react'
 import Select from 'react-select'
 import { MockAPI } from './lib/ApiClient'
 import { Developer } from './lib/Types'
-import './App.css'
+import { ActivityTypes } from './lib/Utils'
 import ActivityItem from './components/ActivityItem/ActivityItem'
-
-const ActivityTypes: Array<string> = ['PR Open', 'PR Merged', 'Commits', 'PR Reviewed', 'PR Comments', 
-  'Incident Alerts', 'Incident Resolved']
+import './App.css'
 
 function App() {
   const [appData, setAppData] = useState<any>(null)
