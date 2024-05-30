@@ -3,6 +3,10 @@ import Select from 'react-select'
 import { MockAPI } from './lib/ApiClient'
 import { Developer } from './lib/Types'
 import './App.css'
+import ActivityItem from './components/ActivityItem/ActivityItem'
+
+const ActivityTypes: Array<string> = ['PR Open', 'PR Merged', 'Commits', 'PR Reviewed', 'PR Comments', 
+  'Incident Alerts', 'Incident Resolved']
 
 function App() {
   const [appData, setAppData] = useState<any>(null)
@@ -10,7 +14,9 @@ function App() {
     name: '',
     activeDays: null,
     dayWiseActivity: [],
-    totalActivity: []
+    totalActivity: ActivityTypes.map((activity: string) => {
+      return {name: activity, value: 0}
+    })
   })
 
   useEffect(() => {
@@ -22,7 +28,7 @@ function App() {
       .catch(error => {
         console.error('API call error', error)
       })
-  }, [appData])
+  }, [])
 
   const getCurrentDevData = (key: string, name: string) => {
     const currentDevData = appData.data.AuthorWorklog.rows.find((row: any) => row.name === name)
@@ -60,7 +66,13 @@ function App() {
         </div>
         
         <div className='totalActivityContainer'>
-          
+          {currentDev.totalActivity.map((activity: any, index: number) => {
+            return <ActivityItem
+              key={index}
+              title={activity.name}
+              value={activity.value}
+            />
+          })}
         </div>
       </div>
       }
