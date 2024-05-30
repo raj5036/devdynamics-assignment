@@ -22,7 +22,7 @@
   gap: 18px;
 }
 
-.selectContainer .select {
+.selectContainer .selectDev {
   width: 18em;
   text-align: center;
 }
@@ -38,4 +38,13 @@
 
 .chartContainer {
   margin-left: 30px;
+  text-align: center;
+}
+
+.chartSelect {
+  width: 36em;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  cursor: pointer;
 }
