@@ -73,92 +73,92 @@ const MockAPIResponse: unknown = {
 					},
 					{
 					"name": "Incidents Resolved",
-					"value": "0"
+					"value": "10"
 					}
 				],
 				"dayWiseActivity": [
 					{
-					"date": "2024-05-06",
-					"items": {
-						"children": [
-						{
-							"count": "0",
-							"label": "PR Open",
-							"fillColor": "#EF6B6B"
-						},
-						{
-							"count": "0",
-							"label": "PR Merged",
-							"fillColor": "#61CDBB"
-						},
-						{
-							"count": "7",
-							"label": "Commits",
-							"fillColor": "#FAC76E"
-						},
-						{
-							"count": "2",
-							"label": "PR Reviewed",
-							"fillColor": "#C2528B"
-						},
-						{
-							"count": "0",
-							"label": "PR Comments",
-							"fillColor": "#0396A6"
-						},
-						{
-							"count": "0",
-							"label": "Incident Alerts",
-							"fillColor": "#5F50A9"
-						},
-						{
-							"count": "0",
-							"label": "Incidents Resolved",
-							"fillColor": "#8F3519"
+						"date": "2024-05-06",
+						"items": {
+							"children": [
+							{
+								"count": "0",
+								"label": "PR Open",
+								"fillColor": "#EF6B6B"
+							},
+							{
+								"count": "0",
+								"label": "PR Merged",
+								"fillColor": "#61CDBB"
+							},
+							{
+								"count": "7",
+								"label": "Commits",
+								"fillColor": "#FAC76E"
+							},
+							{
+								"count": "2",
+								"label": "PR Reviewed",
+								"fillColor": "#C2528B"
+							},
+							{
+								"count": "0",
+								"label": "PR Comments",
+								"fillColor": "#0396A6"
+							},
+							{
+								"count": "0",
+								"label": "Incident Alerts",
+								"fillColor": "#5F50A9"
+							},
+							{
+								"count": "0",
+								"label": "Incidents Resolved",
+								"fillColor": "#8F3519"
+							}
+							]
 						}
-						]
-					}
-					},
-					{
-					"date": "2024-05-07",
-					"items": {
-						"children": [
-						{
-							"count": "1",
-							"label": "PR Open",
-							"fillColor": "#EF6B6B"
 						},
 						{
-							"count": "0",
-							"label": "PR Merged",
-							"fillColor": "#61CDBB"
-						},
-						{
-							"count": "7",
-							"label": "Commits",
-							"fillColor": "#FAC76E"
-						},
-						{
-							"count": "4",
-							"label": "PR Reviewed",
-							"fillColor": "#C2528B"
-						},
-						{
-							"count": "1",
-							"label": "PR Comments",
-							"fillColor": "#0396A6"
-						},
-						{
-							"count": "0",
-							"label": "Incident Alerts",
-							"fillColor": "#5F50A9"
-						},
-						{
-							"count": "0",
-							"label": "Incidents Resolved",
-							"fillColor": "#8F3519"
-						}
-						]
+						"date": "2024-05-07",
+						"items": {
+							"children": [
+							{
+								"count": "1",
+								"label": "PR Open",
+								"fillColor": "#EF6B6B"
+							},
+							{
+								"count": "0",
+								"label": "PR Merged",
+								"fillColor": "#61CDBB"
+							},
+							{
+								"count": "7",
+								"label": "Commits",
+								"fillColor": "#FAC76E"
+							},
+							{
+								"count": "4",
+								"label": "PR Reviewed",
+								"fillColor": "#C2528B"
+							},
+							{
+								"count": "1",
+								"label": "PR Comments",
+								"fillColor": "#0396A6"
+							},
+							{
+								"count": "0",
+								"label": "Incident Alerts",
+								"fillColor": "#5F50A9"
+							},
+							{
+								"count": "0",
+								"label": "Incidents Resolved",
+								"fillColor": "#8F3519"
+							}
+							]
 					}
 					},
 					{
@@ -695,7 +695,7 @@ const MockAPIResponse: unknown = {
 					},
 					{
 					"name": "PR Comments",
-					"value": "0"
+					"value": "23"
 					},
 					{
 					"name": "Incident Alerts",
@@ -703,7 +703,7 @@ const MockAPIResponse: unknown = {
 					},
 					{
 					"name": "Incidents Resolved",
-					"value": "0"
+					"value": "11"
 					}
 				],
 				"dayWiseActivity": [
@@ -1325,15 +1325,15 @@ const MockAPIResponse: unknown = {
 					},
 					{
 					"name": "PR Comments",
-					"value": "1"
+					"value": "5"
 					},
 					{
 					"name": "Incident Alerts",
-					"value": "0"
+					"value": "24"
 					},
 					{
 					"name": "Incidents Resolved",
-					"value": "0"
+					"value": "70"
 					}
 				],
 				"dayWiseActivity": [
@@ -1951,19 +1951,19 @@ const MockAPIResponse: unknown = {
 					},
 					{
 					"name": "PR Reviewed",
-					"value": "0"
+					"value": "9"
 					},
 					{
 					"name": "PR Comments",
-					"value": "0"
+					"value": "10"
 					},
 					{
 					"name": "Incident Alerts",
-					"value": "0"
+					"value": "6"
 					},
 					{
 					"name": "Incidents Resolved",
-					"value": "0"
+					"value": "5"
 					}
 				],
 				"dayWiseActivity": [
