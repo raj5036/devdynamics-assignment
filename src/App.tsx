@@ -1,15 +1,16 @@
 import React,{ useState, useEffect } from 'react'
-import Select from 'react-select'
-import { MockAPI } from './lib/ApiClient'
-import { Developer } from './lib/Types'
-import { ActivityTypes } from './lib/Utils'
-import ActivityItem from './components/ActivityItem/ActivityItem'
+import Select, { MultiValue } from 'react-select'
 import BarChart from './components/BarChart/BarChart'
+import { toast } from 'react-toastify'
+import ActivityItem from './components/ActivityItem/ActivityItem'
+import { ActivityTypes } from './lib/Utils'
+import { IDeveloper } from './lib/Types'
+import { MockAPI } from './lib/ApiClient'
 import './App.css'
 
 function App() {
   const [appData, setAppData] = useState<any>(null)
-  const [currentDev, setCurrentDev] = useState<Developer>({
+  const [currentDev, setCurrentDev] = useState<IDeveloper>({
     name: '',
     activeDays: null,
     dayWiseActivity: [],
@@ -17,7 +18,17 @@ function App() {
       return {name: activity, value: 0}
     })
   })
-  const [chartParameters, setChartParameters] = useState<Array<any>>([])
+  const [chartParameters, setChartParameters] = useState<MultiValue<{label: string, value: string}>>([])
+  const [chartDataset, setChartDataset] = useState<any>({
+    labels: [],
+    datasets: [{
+      label: 'label',
+      data: ActivityTypes,
+      borderColor: 'rgb(255, 99, 132)',
+      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      yAxisID: 'y',
+    }]
+  })
 
   useEffect(() => {
     MockAPI()
@@ -35,17 +46,46 @@ function App() {
     return currentDevData[key]
   }
 
+  const getActivityTypeDataset = (dayWiseActivity: Array<any>, activityType: string) => {
+    const result = dayWiseActivity.map((activeDay: any) => {
+      const activityDetail = activeDay.items.children.find((item: any) => (item.label == activityType))
+      return activityDetail.count
+    })
+    return result
+  }
+
   const onSelectChange = (option: any) => {
     const name = option.value
-    setCurrentDev({
-      name,
-      activeDays: getCurrentDevData('activeDays', name),
-      totalActivity: getCurrentDevData('totalActivity', name),
-      dayWiseActivity: getCurrentDevData('dayWiseActivity', name)
+    setCurrentDev(() => {
+      const activeDays = getCurrentDevData('activeDays', name)
+      const totalActivity = getCurrentDevData('totalActivity', name)
+      const dayWiseActivity = getCurrentDevData('dayWiseActivity', name)
+      
+      setChartDataset({
+        labels: dayWiseActivity.map((activity: any) => activity.date),
+        datasets: ActivityTypes.map((activity: any, index: number) => ({
+          label: activity,
+          data: getActivityTypeDataset(dayWiseActivity, activity),
+          borderColor: '#fc3',
+          backgroundColor: '#fc3',
+          yAxisID: 'y' + index
+        }))
+      })
+
+      return {
+        name,
+        activeDays,
+        totalActivity,
+        dayWiseActivity
+      }
     })
   }
 
-  const onChartSelectChange = (options: any) => {
+  const onChartSelectChange = (options: MultiValue<{label: string, value: string}>) => {
+    if (options.length &&  !currentDev.name) {
+      toast.error('Please select a developer first')
+      return
+    }
     console.log(options)
     setChartParameters(options)
   }
@@ -83,17 +123,21 @@ function App() {
           <div className='chartContainer'>
             <Select
               className='chartSelect'
-              options={ActivityTypes.map((type: string) => {
+              options={currentDev.name ? ActivityTypes.map((type: string) => {
                 return {
                   label: type, value: type
                 }
-              })}
+              }) : []}
               isMulti={true}
               onChange={onChartSelectChange}
               placeholder='Choose parameters'
             />
-            <BarChart/>
+            <BarChart
+              data={chartDataset}
+              options={{}}
+            />
           </div>
+          ok
         </div>
       }
     </React.Fragment>
