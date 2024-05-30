@@ -49,7 +49,7 @@ function App() {
   const getActivityTypeDataset = (dayWiseActivity: Array<any>, activityType: string) => {
     const result = dayWiseActivity.map((activeDay: any) => {
       const activityDetail = activeDay.items.children.find((item: any) => (item.label == activityType))
-      return activityDetail.count
+      return activityDetail
     })
     return result
   }
@@ -61,15 +61,22 @@ function App() {
       const totalActivity = getCurrentDevData('totalActivity', name)
       const dayWiseActivity = getCurrentDevData('dayWiseActivity', name)
       
+      
       setChartDataset({
         labels: dayWiseActivity.map((activity: any) => activity.date),
-        datasets: ActivityTypes.map((activity: any, index: number) => ({
-          label: activity,
-          data: getActivityTypeDataset(dayWiseActivity, activity),
-          borderColor: '#fc3',
-          backgroundColor: '#fc3',
-          yAxisID: 'y' + index
-        }))
+        datasets: ActivityTypes.map((activity: any, index: number) => {
+          const currentActivityData = getActivityTypeDataset(dayWiseActivity, activity)
+          const counts = currentActivityData.map(data => data.count)
+          const fillColors = currentActivityData.map(data => data.fillColor)
+          
+          return {
+            label: activity,
+            data: counts,
+            backgroundColor: fillColors,
+            borderColor: fillColors,
+            yAxisID: 'y' + index
+          }
+        })
       })
 
       return {
