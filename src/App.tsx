@@ -5,6 +5,7 @@ import './App.css'
 
 function App() {
   const [appData, setAppData] = useState<any>(null)
+  const [currentUser, setCurrentUser] = useState<string>('')
 
   useEffect(() => {
     MockAPI()
@@ -23,11 +24,15 @@ function App() {
       
       {appData &&
       <div className='mainContainer'>
-        <Select options={appData.data.AuthorWorklog.rows.map((row: any) => {
-          return {
-            label: row.name, value: row.name
-          }
-        })}/>
+        <Select 
+          options={appData.data.AuthorWorklog.rows.map((row: any) => {
+            return {
+              label: row.name, value: row.name
+            }
+          })}
+          isMulti={false}
+          onChange={(option: any) => setCurrentUser(option.value)}
+        />
         
         <div className='totalActivityContainer'>
           {/* {appData.data.AuthorWorklog.rows} */}
