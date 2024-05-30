@@ -24,6 +24,7 @@
 
 .selectContainer .select {
   width: 18em;
+  text-align: center;
 }
 
 .totalActivityContainer {
@@ -33,4 +34,8 @@
   flex-wrap: wrap;
   gap: 18px;
   margin: 24px 15px 24px 30px;
+}
+
+.chartContainer {
+  margin-left: 30px;
 }
