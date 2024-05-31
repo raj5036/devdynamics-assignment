@@ -22,7 +22,7 @@ function App() {
   const [chartDataset, setChartDataset] = useState<any>({
     labels: [],
     datasets: [{
-      label: 'label',
+      label: 'Label',
       data: ActivityTypes,
       borderColor: 'rgb(255, 99, 132)',
       backgroundColor: 'rgba(255, 99, 132, 0.5)',
@@ -93,7 +93,9 @@ function App() {
       toast.error('Please select a developer first')
       return
     }
-    console.log(options)
+    
+    console.log(chartParameters)
+
     setChartParameters(() => {
       const dayWiseActivity = getCurrentDevData('dayWiseActivity', currentDev.name)
 
@@ -103,19 +105,19 @@ function App() {
             ? options.map(option => option.label) 
             : ActivityTypes
           )
-          .map((activity: any) => {
-          const currentActivityData = getActivityTypeDataset(dayWiseActivity, activity)
-          const counts = currentActivityData.map(data => data.count)
-          const fillColors = currentActivityData.map(data => data.fillColor)
-          
-          return {
-            label: activity,
-            data: counts,
-            backgroundColor: fillColors,
-            borderColor: fillColors,
-            yAxisID: 'y'
-          }
-        })
+            .map((activity: any) => {
+              const currentActivityData = getActivityTypeDataset(dayWiseActivity, activity)
+              const counts = currentActivityData.map(data => data.count)
+              const fillColors = currentActivityData.map(data => data.fillColor)
+            
+              return {
+                label: activity,
+                data: counts,
+                backgroundColor: fillColors,
+                borderColor: fillColors,
+                yAxisID: 'y'
+              }
+          })
       })
       return options
     })
