@@ -74,7 +74,7 @@ function App() {
             data: counts,
             backgroundColor: fillColors,
             borderColor: fillColors,
-            yAxisID: 'y' + index
+            yAxisID: 'y'
           }
         })
       })
