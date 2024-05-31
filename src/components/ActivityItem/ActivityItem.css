@@ -1,5 +1,6 @@
 .activityItemContainer {
 	border: solid 1px #ccc;
+	background-color: #F3F6F7;
     height: 88px;
     width: 194px;
 	border-radius: 5px;
@@ -22,6 +23,7 @@
 
 .title {
 	font-size: 14px;
+	font-weight: 600;
     opacity: 0.8;
 }
 

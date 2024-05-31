@@ -39,6 +39,14 @@ function App() {
       })
   }, [])
 
+  const getActivityColor = (activityType: string) => {
+    const activityMeta = appData.data.AuthorWorklog.activityMeta.find((activity: any) => {
+      return activity.label == activityType
+    })
+    
+    return activityMeta.fillColor
+  }
+
   const getCurrentDevData = (key: string, name: string) => {
     const currentDevData = appData.data.AuthorWorklog.rows.find((row: any) => row.name === name)
     return currentDevData[key]
@@ -147,6 +155,7 @@ function App() {
                 key={index}
                 title={activity.name}
                 value={activity.value}
+                color={getActivityColor(activity.name)}
               />
             })}
           </div>
