@@ -9,8 +9,8 @@ import {
 	Tooltip, 
 	Legend,
 } from 'chart.js'
-import './BarChart.css'
 import React from 'react'
+import './LineChart.css'
 
 ChartJS.register(
 	CategoryScale, 
@@ -27,16 +27,23 @@ interface PropTypes {
 	data: any
 }
 
-const BarChart: React.FC<PropTypes> = ({data, options}) => {
+const LineChart: React.FC<PropTypes> = ({data, options}) => {
 	return (<div className='lineChartContainer'>
 		<Line
 			data={data} 
 			options={{
 					...options,
 					responsive: true,
+					scales: {
+						y: {
+							type: "linear" as const,
+							display: true,
+							position: "left" as const,
+						},
+					},
 				}}
 		/>
 	</div>)
 }
 
-export default BarChart
+export default LineChart

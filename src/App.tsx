@@ -1,11 +1,11 @@
 import React,{ useState, useEffect } from 'react'
 import Select, { MultiValue } from 'react-select'
-import BarChart from './components/BarChart/BarChart'
 import { toast } from 'react-toastify'
 import ActivityItem from './components/ActivityItem/ActivityItem'
 import { ActivityTypes } from './lib/Utils'
 import { IDeveloper } from './lib/Types'
 import { MockAPI } from './lib/ApiClient'
+import LineChart from './components/LineChart/LineChart'
 import './App.css'
 
 function App() {
@@ -94,7 +94,31 @@ function App() {
       return
     }
     console.log(options)
-    setChartParameters(options)
+    setChartParameters(() => {
+      const dayWiseActivity = getCurrentDevData('dayWiseActivity', currentDev.name)
+
+      setChartDataset({
+        labels: dayWiseActivity.map((activity: any) => activity.date),
+        datasets: (options.length 
+            ? options.map(option => option.label) 
+            : ActivityTypes
+          )
+          .map((activity: any) => {
+          const currentActivityData = getActivityTypeDataset(dayWiseActivity, activity)
+          const counts = currentActivityData.map(data => data.count)
+          const fillColors = currentActivityData.map(data => data.fillColor)
+          
+          return {
+            label: activity,
+            data: counts,
+            backgroundColor: fillColors,
+            borderColor: fillColors,
+            yAxisID: 'y'
+          }
+        })
+      })
+      return options
+    })
   }
 
   return (
@@ -138,15 +162,14 @@ function App() {
               isMulti={true}
               closeMenuOnSelect={true}
               onChange={onChartSelectChange}
-              placeholder={!currentDev.name ? 'Select a Developer first' : 'Choose parameters'}
+              placeholder={!currentDev.name ? 'Select a Developer first' : 'Choose specific Parameters'}
               isDisabled={!currentDev.name}
             />
-            <BarChart
+            <LineChart
               data={chartDataset}
               options={{}}
             />
           </div>
-          ok
         </div>
       }
     </React.Fragment>
