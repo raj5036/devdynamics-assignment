@@ -64,7 +64,7 @@ function App() {
       
       setChartDataset({
         labels: dayWiseActivity.map((activity: any) => activity.date),
-        datasets: ActivityTypes.map((activity: any, index: number) => {
+        datasets: ActivityTypes.map((activity: any) => {
           const currentActivityData = getActivityTypeDataset(dayWiseActivity, activity)
           const counts = currentActivityData.map(data => data.count)
           const fillColors = currentActivityData.map(data => data.fillColor)
@@ -136,8 +136,10 @@ function App() {
                 }
               }) : []}
               isMulti={true}
+              closeMenuOnSelect={true}
               onChange={onChartSelectChange}
-              placeholder='Choose parameters'
+              placeholder={!currentDev.name ? 'Select a Developer first' : 'Choose parameters'}
+              isDisabled={!currentDev.name}
             />
             <BarChart
               data={chartDataset}
