@@ -24,8 +24,6 @@ function App() {
     datasets: [{
       label: 'Label',
       data: ActivityTypes,
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
       yAxisID: 'y',
     }]
   })
@@ -93,7 +91,7 @@ function App() {
       toast.error('Please select a developer first')
       return
     }
-    
+
     console.log(chartParameters)
 
     setChartParameters(() => {

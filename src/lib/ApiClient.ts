@@ -532,7 +532,7 @@ const MockAPIResponse: unknown = {
 							"fillColor": "#5F50A9"
 						},
 						{
-							"count": "0",
+							"count": "5",
 							"label": "Incidents Resolved",
 							"fillColor": "#8F3519"
 						}
@@ -574,7 +574,7 @@ const MockAPIResponse: unknown = {
 							"fillColor": "#5F50A9"
 						},
 						{
-							"count": "0",
+							"count": "5",
 							"label": "Incidents Resolved",
 							"fillColor": "#8F3519"
 						}
