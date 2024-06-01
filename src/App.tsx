@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react'
 import Select, { MultiValue } from 'react-select'
 import { toast } from 'react-toastify'
 import ActivityItem from './components/ActivityItem/ActivityItem'
-import { ActivityTypes } from './lib/Utils'
+import { ActivityTypes, changeDateFormat } from './lib/Utils'
 import { IDeveloper } from './lib/Types'
 import { MockAPI } from './lib/ApiClient'
 import BarChart from './components/BarChart/BarChart'
@@ -80,7 +80,7 @@ function App() {
       
       
       setChartDataset({
-        labels: dayWiseActivity.map((activity: any) => activity.date),
+        labels: dayWiseActivity.map((activity: any) => changeDateFormat(activity.date)),
         datasets: ActivityTypes.map((activity: any) => {
           const currentActivityData = getActivityTypeDataset(dayWiseActivity, activity)
           const counts = currentActivityData.map(data => data.count)
