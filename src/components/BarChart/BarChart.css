@@ -1,4 +1,4 @@
-.barChartContainer {
+.barChartContainer canvas {
 	margin-top: 52px;
-	text-align: center;	
+	width: 890px !important;
 }

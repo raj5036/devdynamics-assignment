@@ -1,9 +1,9 @@
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Chart as DoughnutChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import './DoughnutChart.css'
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+DoughnutChartJS.register(ArcElement, Tooltip);
 
 interface PropTypes {
 	data: any
@@ -13,7 +13,16 @@ const DoughnutChart: React.FC<PropTypes> = ({data}) => {
 	console.log(data)
 	return (
 		<div className='doughnutChartContainer'>
-			<Doughnut data={data} />
+			<Doughnut 
+				data={data} 
+				options={{
+					plugins: {
+						legend: {
+							display: false
+						}
+					}
+				}}
+			/>
 		</div>
 	)
 }

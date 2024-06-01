@@ -5,7 +5,6 @@ import ActivityItem from './components/ActivityItem/ActivityItem'
 import { ActivityTypes } from './lib/Utils'
 import { IDeveloper } from './lib/Types'
 import { MockAPI } from './lib/ApiClient'
-import LineChart from './components/LineChart/LineChart'
 import BarChart from './components/BarChart/BarChart'
 import './App.css'
 import DoughnutChart from './components/DoughnutChart/DoughnutChart'
@@ -36,7 +35,7 @@ function App() {
       label: 'Label',
       data: ActivityTypes,
       backgroundColor: ActivityTypes,
-      borderColor: ActivityTypes
+      borderColor: ActivityTypes,
     }]
   })
 
@@ -104,7 +103,8 @@ function App() {
           label: 'Total Count',
           data: totalActivity.map((activity: any) => activity.value),
           backgroundColor: totalActivity.map((activity: any) => getActivityColor(activity.name)),
-          borderColor: totalActivity.map((activity: any) => getActivityColor(activity.name))
+          borderColor: totalActivity.map((activity: any) => getActivityColor(activity.name)),
+          cutout: '80%'
         }]
       })
 
@@ -183,25 +183,28 @@ function App() {
               />
             })}
           </div>
-
-          <div className='chartContainer'>
-            <Select
-              className='chartSelect'
-              options={currentDev.name ? ActivityTypes.map((type: string) => {
-                return {
-                  label: type, value: type
-                }
-              }) : []}
-              isMulti={true}
-              closeMenuOnSelect={true}
-              onChange={onChartSelectChange}
-              placeholder={!currentDev.name ? 'Select a Developer first' : 'Choose specific Parameters'}
-              isDisabled={!currentDev.name}
-            />
-            <LineChart data={chartDataset} />
-            <BarChart data={chartDataset} />
-            <DoughnutChart data={doughnutChartData} />
-          </div>
+          
+          {currentDev.name && 
+            <>
+              <Select
+                className='chartSelect'
+                options={ActivityTypes.map((type: string) => {
+                  return {
+                    label: type, value: type
+                  }
+                })}
+                isMulti={true}
+                closeMenuOnSelect={true}
+                onChange={onChartSelectChange}
+                placeholder={!currentDev.name ? 'Select a Developer first' : 'Choose specific Parameters'}
+                isDisabled={!currentDev.name}
+              />
+            <div className='chartContainer'>
+              {/* <LineChart data={chartDataset} /> */}
+              <BarChart data={chartDataset} />
+              <DoughnutChart data={doughnutChartData} />
+            </div>
+          </>}
         </div>
       }
     </React.Fragment>

@@ -31,10 +31,12 @@ interface PropTypes {
 const BarChart: React.FC<PropTypes> = ({data, options}) => {
 	// Return JSX for Bar Chart component
 	return (
-		<div className="barChartContainer">
-			<Bar options={{
+		<div className='barChartContainer'>
+			<Bar 
+				options={{
 					...options,
-					responsive: true
+					responsive: true,
+					maintainAspectRatio: false
 				}} 
 				data={data} 
 			/>
