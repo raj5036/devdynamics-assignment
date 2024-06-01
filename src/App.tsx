@@ -50,7 +50,7 @@ function App() {
       })
   }, [])
 
-  const getActivityColor = (activityType: string) => {
+  const getActivityColor = (activityType: string): string => {
     const activityMeta = appData.data.AuthorWorklog.activityMeta.find((activity: any) => {
       return activity.label == activityType
     })
@@ -71,7 +71,7 @@ function App() {
     return result
   }
 
-  const onSelectChange = (option: any) => {
+  const onSelectChange = (option: any): void => {
     const name = option.value
     setCurrentDev(() => {
       const activeDays = getCurrentDevData('activeDays', name)
@@ -129,7 +129,7 @@ function App() {
       const dayWiseActivity = getCurrentDevData('dayWiseActivity', currentDev.name)
 
       setChartDataset({
-        labels: dayWiseActivity.map((activity: any) => activity.date),
+        labels: dayWiseActivity.map((activity: any) => changeDateFormat(activity.date)),
         datasets: (options.length 
             ? options.map(option => option.label) 
             : ActivityTypes

@@ -1,4 +1,7 @@
 .doughnutChartContainer {
-	height: 236px;
-	width: 11rem;
+	margin-top: 65px;
+}
+
+.doughnutChartContainer canvas{
+	height: 240px !important;
 }
