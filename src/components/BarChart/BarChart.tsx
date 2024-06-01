@@ -21,7 +21,7 @@ ChartJS.register(
 );
 
 interface PropTypes {
-	options: any,
+	options?: any,
 	data: any
 }
 

@@ -178,14 +178,8 @@ function App() {
               placeholder={!currentDev.name ? 'Select a Developer first' : 'Choose specific Parameters'}
               isDisabled={!currentDev.name}
             />
-            <LineChart
-              data={chartDataset}
-              options={{}}
-            />
-            <BarChart
-              data={chartDataset}
-              options={{}}
-            />
+            <LineChart data={chartDataset} />
+            <BarChart data={chartDataset} />
           </div>
         </div>
       }
