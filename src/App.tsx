@@ -6,6 +6,7 @@ import { ActivityTypes } from './lib/Utils'
 import { IDeveloper } from './lib/Types'
 import { MockAPI } from './lib/ApiClient'
 import LineChart from './components/LineChart/LineChart'
+import BarChart from './components/BarChart/BarChart'
 import './App.css'
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
       label: 'Label',
       data: ActivityTypes,
       yAxisID: 'y',
+      stack: 'stack 0'
     }]
   })
 
@@ -80,7 +82,8 @@ function App() {
             data: counts,
             backgroundColor: fillColors,
             borderColor: fillColors,
-            yAxisID: 'y'
+            yAxisID: 'y',
+            stack: 'stack 0'
           }
         })
       })
@@ -121,7 +124,8 @@ function App() {
                 data: counts,
                 backgroundColor: fillColors,
                 borderColor: fillColors,
-                yAxisID: 'y'
+                yAxisID: 'y',
+                stack: 'stack 0',
               }
           })
       })
@@ -175,6 +179,10 @@ function App() {
               isDisabled={!currentDev.name}
             />
             <LineChart
+              data={chartDataset}
+              options={{}}
+            />
+            <BarChart
               data={chartDataset}
               options={{}}
             />
