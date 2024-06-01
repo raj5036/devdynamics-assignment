@@ -8,6 +8,7 @@ import { MockAPI } from './lib/ApiClient'
 import LineChart from './components/LineChart/LineChart'
 import BarChart from './components/BarChart/BarChart'
 import './App.css'
+import DoughnutChart from './components/DoughnutChart/DoughnutChart'
 
 function App() {
   const [appData, setAppData] = useState<any>(null)
@@ -27,6 +28,15 @@ function App() {
       data: ActivityTypes,
       yAxisID: 'y',
       stack: 'stack 0'
+    }]
+  })
+  const [doughnutChartData, setDoughnutChartData] = useState<any>({
+    labels: [],
+    datasets: [{
+      label: 'Label',
+      data: ActivityTypes,
+      backgroundColor: ActivityTypes,
+      borderColor: ActivityTypes
     }]
   })
 
@@ -86,6 +96,16 @@ function App() {
             stack: 'stack 0'
           }
         })
+      })
+
+      setDoughnutChartData({
+        labels: totalActivity.map((activity: any) => activity.name),
+        datasets: [{
+          label: 'Total Count',
+          data: totalActivity.map((activity: any) => activity.value),
+          backgroundColor: totalActivity.map((activity: any) => getActivityColor(activity.name)),
+          borderColor: totalActivity.map((activity: any) => getActivityColor(activity.name))
+        }]
       })
 
       return {
@@ -180,6 +200,7 @@ function App() {
             />
             <LineChart data={chartDataset} />
             <BarChart data={chartDataset} />
+            <DoughnutChart data={doughnutChartData} />
           </div>
         </div>
       }
