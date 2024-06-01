@@ -131,7 +131,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <h1 className='header'>Discover your team highlights</h1>
+      <h1 className='header'>Discover your team highlights. </h1>
       
       {appData &&
         <div className='mainContainer'>

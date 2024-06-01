@@ -1,7 +1,6 @@
 .activityItemContainer {
 	border: solid 1px #ccc;
-	background-color: #F3F6F7;
-    height: 88px;
+    height: 82px;
     width: 194px;
 	border-radius: 5px;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -10,6 +9,7 @@
 
 .activityItemContainer:hover {
 	transform: scale(1.1);
+	background-color: #F3F6F7;
 }
 
 .titleContainer {
