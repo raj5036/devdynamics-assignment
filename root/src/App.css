@@ -63,6 +63,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 5rem;
   width: 66.5rem;
 }
