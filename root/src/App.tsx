@@ -186,24 +186,25 @@ function App() {
           
           {currentDev.name && 
             <>
+              <h2 className='subHeader'>Investment Distribution</h2>
               <Select
-                className='chartSelect'
-                options={ActivityTypes.map((type: string) => {
-                  return {
-                    label: type, value: type
-                  }
-                })}
-                isMulti={true}
-                closeMenuOnSelect={true}
-                onChange={onChartSelectChange}
-                placeholder={!currentDev.name ? 'Select a Developer first' : 'Choose specific Parameters'}
-                isDisabled={!currentDev.name}
+                  className='chartSelect'
+                  options={ActivityTypes.map((type: string) => {
+                    return {
+                      label: type, value: type
+                    }
+                  })}
+                  isMulti={true}
+                  closeMenuOnSelect={true}
+                  onChange={onChartSelectChange}
+                  placeholder={!currentDev.name ? 'Select a Developer first' : 'Choose specific Parameters'}
+                  isDisabled={!currentDev.name}
               />
-            <div className='chartContainer'>
-              {/* <LineChart data={chartDataset} /> */}
-              <BarChart data={chartDataset} />
-              <DoughnutChart data={doughnutChartData} />
-            </div>
+              <div className='chartContainer'>
+                {/* <LineChart data={chartDataset} /> */}
+                <BarChart data={chartDataset} />
+                <DoughnutChart data={doughnutChartData} />
+              </div>
           </>}
         </div>
       }
