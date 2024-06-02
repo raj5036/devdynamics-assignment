@@ -234,19 +234,17 @@ function App() {
                   return <div
                     key={index}
                     className='legend'
-                    style={{backgroundColor: getActivityColor(type)}}
                   >
-                    <div className='color'></div> 
-                    <span>{type}</span>
+                    <div className='color' style={{backgroundColor: getActivityColor(type)}}></div> 
+                    <div className='label'>{type}</div>
                   </div>
                 }) : chartParameters.map((parameter: any, index: number) => {
                   return <div
                     key={index}
                     className='legend'
-                    style={{backgroundColor: getActivityColor(parameter.value)}}
                   >
-                    <div className='color'></div> 
-                    <span>{parameter.label}</span>
+                    <div className='color' style={{backgroundColor: getActivityColor(parameter.value)}}></div> 
+                    <div className='label'>{parameter.label}</div>
                   </div>
                 })}
               </div>
