@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react'
 import Select, { MultiValue } from 'react-select'
 import { toast } from 'react-toastify'
 import ActivityItem from './components/ActivityItem/ActivityItem'
-import { ActivityTypes, changeDateFormat, intersection } from './lib/Utils'
+import { ActivityTypes, changeDateFormat } from './lib/Utils'
 import { IDeveloper } from './lib/Types'
 import { MockAPI } from './lib/ApiClient'
 import BarChart from './components/BarChart/BarChart'
@@ -228,6 +228,27 @@ function App() {
                 {/* <LineChart data={chartDataset} /> */}
                 <BarChart data={chartDataset} />
                 <DoughnutChart data={doughnutChartData} />
+              </div>
+              <div className='legends'>
+                {!chartParameters.length ? ActivityTypes.map((type: string, index: number) => {
+                  return <div
+                    key={index}
+                    className='legend'
+                    style={{backgroundColor: getActivityColor(type)}}
+                  >
+                    <div className='color'></div> 
+                    <span>{type}</span>
+                  </div>
+                }) : chartParameters.map((parameter: any, index: number) => {
+                  return <div
+                    key={index}
+                    className='legend'
+                    style={{backgroundColor: getActivityColor(parameter.value)}}
+                  >
+                    <div className='color'></div> 
+                    <span>{parameter.label}</span>
+                  </div>
+                })}
               </div>
           </>}
         </div>

@@ -39,7 +39,8 @@ const BarChart: React.FC<PropTypes> = ({data, options}) => {
 					maintainAspectRatio: false,
 					plugins: {
 						legend: {
-							position: 'bottom'
+							position: 'bottom',
+							display: false
 						}
 					}
 				}} 
