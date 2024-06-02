@@ -2,7 +2,7 @@ import React,{ useState, useEffect } from 'react'
 import Select, { MultiValue } from 'react-select'
 import { toast } from 'react-toastify'
 import ActivityItem from './components/ActivityItem/ActivityItem'
-import { ActivityTypes, changeDateFormat } from './lib/Utils'
+import { ActivityTypes, changeDateFormat, intersection } from './lib/Utils'
 import { IDeveloper } from './lib/Types'
 import { MockAPI } from './lib/ApiClient'
 import BarChart from './components/BarChart/BarChart'
@@ -117,6 +117,18 @@ function App() {
     })
   }
 
+  const filterTotalActivity = (
+    totalActivity: Array<any>, 
+    options:  MultiValue<{label: string, value: string}>
+  ): Array<any> => {
+    if (!options.length) return totalActivity
+
+    options = options.map((option: any) => option.value)
+    return totalActivity.filter((activity: any) => {
+      return options.includes(activity.name)
+    })
+  }
+
   const onChartSelectChange = (options: MultiValue<{label: string, value: string}>) => {
     if (options.length &&  !currentDev.name) {
       toast.error('Please select a developer first')
@@ -148,6 +160,18 @@ function App() {
                 stack: 'stack 0',
               }
           })
+      })
+
+      const totalActivity = filterTotalActivity(getCurrentDevData('totalActivity', currentDev.name), options)
+      setDoughnutChartData({
+        labels: totalActivity.map((activity: any) => activity.name),
+        datasets: [{
+          label: 'Total Count',
+          data: totalActivity.map((activity: any) => activity.value),
+          backgroundColor: totalActivity.map((activity: any) => getActivityColor(activity.name)),
+          borderColor: totalActivity.map((activity: any) => getActivityColor(activity.name)),
+          cutout: '80%'
+        }]
       })
       return options
     })

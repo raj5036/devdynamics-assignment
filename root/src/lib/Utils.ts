@@ -19,3 +19,17 @@ export const changeDateFormat = (date: string): string => {
     const newDate = new Date(date)
     return newDate.toLocaleDateString('en-US', options).replace(/(\d)(st|nd|rd|th)/g, '$1 $2')
 }
+
+/**
+ * Returns an array containing the elements that are common to both the
+ * input arrays.
+ *
+ * @template T
+ * @param {T[]} array1
+ * @param {T[]} array2
+ * @return {T[]}
+ */
+export const intersection = <T>(array1: T[], array2: T[]): T[] => {
+    return array1.filter(value => array2.includes(value))
+}
+

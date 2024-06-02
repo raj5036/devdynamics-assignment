@@ -19,6 +19,9 @@ const DoughnutChart: React.FC<PropTypes> = ({data}) => {
 					plugins: {
 						legend: {
 							display: false
+						},
+						tooltip: {
+							enabled: true,
 						}
 					}
 				}}
